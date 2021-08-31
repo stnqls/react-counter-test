@@ -4,6 +4,32 @@ class Counter extends Component {
   state = {
     number: 0
   }
+  constructor(props) {
+    super(props);
+    console.log('constructor');
+  }
+
+  componentWillMount() {
+    console.log('componenetWillMount (deprecated)');
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate');
+    if(nextProps.number %5 === 0) return false;
+    return true;
+  }
+
+  componentWillUpdate(nextpProps, nextState) {
+    console.log('componentWillUpdate');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+  }
 
   handleIncrease = () => {
     this.setState({
