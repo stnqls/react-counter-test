@@ -50,6 +50,15 @@ class PhoneInfo extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(!this.state.editing //수정상태가 아니고, info값이 같다면 리렌더링을 안한다.
+        && !nextState.editing
+        && nextProps.info === this.props.info ){
+          return false;
+        }
+        return true;
+  }
+
   render() {
     const style = {
       border: '1px solid black',
